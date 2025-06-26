@@ -1,4 +1,5 @@
 const { User } = require("../models/users");
+const sendEmailConfirmation = require('../utils/sendEmail')
 
 
 const register = async (req, res) => {
@@ -25,6 +26,9 @@ const register = async (req, res) => {
       if(!newUser){
         return res.status(404).json({msg: 'Database problem. Unable to create'})
       }
+
+
+      await sendEmailConfirmation(newUser.email)
 
       return res.status(200).json({msg:'User created',
         user: {

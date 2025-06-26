@@ -10,7 +10,8 @@ async function sendEmailConfirmation(email){
     });
 
    const message = `
-    Hello,
+   <p>
+   SSS
     </p>
     <p> Please verify your email by the link below:</p>
     <a>Verify Email</a>
@@ -21,7 +22,7 @@ async function sendEmailConfirmation(email){
         from: `"Testing" <${process.env.EMAIL_USER}>,`,
         to: email,
         subject: 'Verify the mail',
-        message
+        html: message
     })
    }
    catch(error){
